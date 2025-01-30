@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = 'https://hooks.slack.com/services/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'
+url = 'https://hooks.slack.com/services/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'
 
 payload = {
     "channel": "#trigger-from-notion-to-slack",
@@ -10,7 +10,7 @@ payload = {
     "icon_emoji": ":ghost:"
 }
 
-response = requests.post(url, data=json.dumps({"payload": json.dumps(payload)}), headers={'Content-Type': 'application/json'})
+response = requests.post(url, json=payload)
 
-print(response)
+print(response.text)
 print(response.status_code)
