@@ -7,4 +7,5 @@ payload = {
 }
 
 response = requests.post(url, data=json.dumps(payload), headers={'Content-Type': 'application/json'})
+print(response)
 print(response.status_code)
