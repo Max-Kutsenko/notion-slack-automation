@@ -1,14 +1,8 @@
 {
-  "builds": [
+  "crons": [
     {
-      "src": "involvement-trigger.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "involvement-trigger.py"
+      "path": "/api/involvement-trigger",
+      "schedule": "*/1 * * * *"
     }
   ]
 }
