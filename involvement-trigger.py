@@ -1,12 +1,15 @@
-import requests
-import json
+from requests import post
+from os import environ
+from dotenv import load_dotenv
 
-url = 'https://hooks.slack.com/services/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'
+load_dotenv()
+
+url = environ['INCOMING_WEBHOOK_URL']
 
 payload = {
     "text": "Hello, World!"
 }
 
-response = requests.post(url, json=payload)
+response = post(url, json=payload)
 
 print(response.status_code)
