@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = 'https://hooks.slack.com/services/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'
+url = 'https://hooks.slack.com/services/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'
 payload = {
     "text": "Hello, Slack!"
 }
