@@ -27,4 +27,6 @@ jobs:
       - name: Run script
         env:
           INCOMING_WEBHOOK_URL: ${{ secrets.INCOMING_WEBHOOK_URL }}
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          DATABASE_ID: ${{ secrets.DATABASE_ID }}
         run: python involvement-trigger.py
