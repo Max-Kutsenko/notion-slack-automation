@@ -97,7 +97,7 @@ def send_report_to_slack(incoming_webhook_url: str, employees: list):
     blocks.append(
         {
             "type": "section",
-            "text": {"type": "mrkdwn", "text": "The report will be posted every day."},
+            "text": {"type": "mrkdwn", "text": "The report will be posted every day at midnight (UTC)."},
         }
     )
 
