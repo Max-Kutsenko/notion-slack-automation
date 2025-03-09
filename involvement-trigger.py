@@ -76,7 +76,7 @@ def send_report_to_slack(incoming_webhook_url: str, employees: list):
 
     for involvement, emp_list in involvement_levels.items():
         if emp_list:
-            color_icon = color_mapping[involvement]
+            color_icon = color_mapping.get(involvement, "⚪")
             employee_names = ", ".join(
                 [
                     f"{emp['name'].strip().title()} ({emp['position']})"
@@ -122,21 +122,21 @@ if __name__ == "__main__":
         actual_involvement = record["properties"]["Actual Involvement"]["rollup"][
             "number"
         ]
-        if actual_involvement < 100:
-            employee_name = record["properties"]["Person"]["title"][0]["plain_text"]
-            employee_position = record["properties"]["Position"]["multi_select"][0][
-                "name"
-            ]
-            employee_url = record["url"]
 
-            employee_data = {
-                "name": employee_name,
-                "position": employee_position,
-                "involvement": actual_involvement,
-                "url": employee_url,
-            }
+        employee_name = record["properties"][""]["title"][0]["plain_text"]
+        employee_position = record["properties"]["Position"]["multi_select"][0][
+            "name"
+        ]
+        employee_url = record["url"]
 
-            report_data.append(employee_data)
+        employee_data = {
+            "name": employee_name,
+            "position": employee_position,
+            "involvement": actual_involvement,
+            "url": employee_url,
+        }
+
+        report_data.append(employee_data)
 
     status_code = send_report_to_slack(INCOMING_WEBHOOK_URL, report_data)
-    print("Response Status Code:", status_code)
+    print(status_code)
