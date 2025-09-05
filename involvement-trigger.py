@@ -1,4 +1,6 @@
-from requests import post, get
+#!/usr/local/bin/python3.12
+
+from requests import post
 from os import environ
 from dotenv import load_dotenv
 
@@ -97,7 +99,10 @@ def send_report_to_slack(incoming_webhook_url: str, employees: list):
     blocks.append(
         {
             "type": "section",
-            "text": {"type": "mrkdwn", "text": "The report will be posted every day at midnight (UTC)."},
+            "text": {
+                "type": "mrkdwn",
+                "text": "The report will be posted every day at midnight (UTC).",
+            },
         }
     )
 
@@ -124,9 +129,7 @@ if __name__ == "__main__":
         ]
 
         employee_name = record["properties"][""]["title"][0]["plain_text"]
-        employee_position = record["properties"]["Position"]["multi_select"][0][
-            "name"
-        ]
+        employee_position = record["properties"]["Position"]["multi_select"][0]["name"]
         employee_url = record["url"]
 
         employee_data = {
